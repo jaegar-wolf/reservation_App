@@ -21,7 +21,7 @@ export class AuthService {
     return null;
   }
 
-  async generateRefreshToken(userId):  Promise<string>{
+  async generateRefreshToken(userId: any):  Promise<string>{
     var refreshToken = randtoken.generate(16);
     var expirydate =new Date();
     expirydate.setDate(expirydate.getDate() + 6);
