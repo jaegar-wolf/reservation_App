@@ -28,15 +28,15 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
 
     <View style={{flex: 1}}>
     <View style={styles.Presenation}>
-      <ImageBackground source = {require("../assets/images/Background.jpg")} resizeMode="repeat" style={styles.image}>
-      <Text style = {styles.text_introduction}>
-      En franchissant les portes de notre centre de beauté, vous pénéterez dans un havre où calme et professionnalisme se conjugent au bénéfice de la beauté et du soin et où vous laisserez derrière vous l'agitation urbaine. 
-      Zone of zen se fera un plaisir de s'occuper de vous aussi bien des femmes que des hommes.
-      Dans un ambiance chaleureuse,souritante et reposante ici le temps marque une pause, la votre.
-      </Text>
-      <Button onPress={() => Alert.alert('Simple Button pressed')}>
-        Découvrir
-      </Button>
+      <ImageBackground source = {require("../assets/images/presentation.jpg")} resizeMode="cover" style={styles.image}>
+        <Text style = {styles.text_introduction}>
+          En franchissant les portes de notre centre de beauté, vous pénéterez dans un havre où calme et professionnalisme se conjugent au bénéfice de la beauté et du soin et où vous laisserez derrière vous l'agitation urbaine. 
+          Zone of zen se fera un plaisir de s'occuper de vous aussi bien des femmes que des hommes.
+          Dans un ambiance chaleureuse,souritante et reposante ici le temps marque une pause, la votre.
+        </Text>
+        <Button onPress={() => Alert.alert('Simple Button pressed')}>
+          Découvrir
+        </Button>
       </ImageBackground>
       
     </View>
@@ -91,11 +91,12 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "center"
     
   },
 
   Presenation : {
-    height:300,
+    height:"70vh",
     alignItems:'center',
    // alignContent:'center',
     justifyContent:'center',
@@ -117,7 +118,6 @@ const styles = StyleSheet.create({
     width:"50%",
     marginTop:50,
     fontWeight:'bold',
-    fontFamily:'San-Francisco',
 
   },
 
