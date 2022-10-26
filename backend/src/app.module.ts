@@ -1,27 +1,36 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeusersModule } from './typeusers/typeusers.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersModule } from './users/users.module';
+import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-import * as config from '../ormconfig.json';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [TypeOrmModule.forRoot({
-                "type": "mysql",
-                "host": config.host,
-                "port": config.port,
-                "username": config.username,
-                "password": config.password,
-                "database": config.database,
-                "entities": ["dist/**/**.entity{.ts,.js}"],
-                "synchronize": true
-            }),
-            TypeusersModule,
-            UsersModule,
-            AuthModule],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: '127.0.0.1',
+      port: 5432,
+      username: 'postgres',
+      password: 'Cryingwolf',
+      database: 'ReservationApp',
+      entities: [__dirname + '/../**/*.entity.js'],
+      synchronize: true,
+    }),
+    ConfigModule.forRoot({ envFilePath: "dev.env"}),
+    UserModule,
+    AuthModule,
+  ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    }
+  ],
 })
 export class AppModule {}

@@ -1,5 +1,5 @@
-
 export const jwtConstants = {
-    secret: 'secretKey',
-};
-  
+    secret: `${process.env.JWT_SECRET}`,
+}
+
+export const SALT_WORK_FACTOR = 10 
