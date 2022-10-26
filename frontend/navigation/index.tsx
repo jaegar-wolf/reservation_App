@@ -3,7 +3,6 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -20,11 +19,16 @@ import LoginScreen from '../screens/LoginScreen';
 import MainScreen from '../screens/MainScreen';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
+import ReservationScreen from '../screens/ReservationScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { login } from '../services/AuthService';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee, faDumbbell, faUser, faHouse, faCalendarCheck, faCircleUser, faNewspaper } from '@fortawesome/free-solid-svg-icons';
+import UserScreen from '../screens/UserScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -53,6 +57,7 @@ function RootNavigator() {
         <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Article" component={ArticleScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Reservation" component={ReservationScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Inscription" component={InscriptionScreen} options={{ headerShown: false }} />
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       </Stack.Navigator>
@@ -89,23 +94,34 @@ function BottomTabNavigator() {
         options={{
           title: 'Accueil',
           headerShown:false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />
+          tabBarIcon: ({ color="green" }) => <FontAwesomeIcon icon={faHouse} color={color}/>,
         }}
       />
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneScreen}
+        name="Article"
+        component={ArticleScreen}
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Article',
+          headerShown:false,
+          tabBarIcon: ({ color }) => <FontAwesomeIcon icon={faNewspaper} color={color}/>,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoScreen}
+        name="Reservation"
+        component={ReservationScreen}
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Reservation',
+          headerShown:false,
+          tabBarIcon: ({ color }) => <FontAwesomeIcon icon={faCalendarCheck} color={color}/>,
+        }}
+      />
+      <BottomTab.Screen
+        name="User"
+        component={UserScreen}
+        options={{
+          title: 'User',
+          headerShown:false,
+          tabBarIcon: ({ color }) => <FontAwesomeIcon icon={faCircleUser} color={color}/>,
         }}
       />
     </BottomTab.Navigator>
@@ -115,9 +131,9 @@ function BottomTabNavigator() {
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
-function TabBarIcon(props: {
+/* function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
 }) {
   return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
-}
+} */
