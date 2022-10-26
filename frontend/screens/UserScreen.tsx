@@ -9,19 +9,22 @@ export default function UserScreen({ navigation }: RootStackScreenProps<'User'>)
     return (
         <View style={styles.container}>
            <ImageBackground source = {require("../assets/images/Background.jpg")} resizeMode="repeat" style={styles.image}>
-                <View style={{ display: "flex", justifyContent:"center", alignItems:"center", marginTop: 20}}>
-                    <Text darkColor="black">Mathieu ALBIN</Text>
-                    <Paragraph>mathiiew972@gmail.com</Paragraph>
-                    <Paragraph>0695342355</Paragraph>
+                <Text style={[styles.title, {marginTop: 10}]} darkColor="dark">User</Text>
+                <View style={{ display: "flex", alignItems:"center", flexDirection:"row", marginTop: 40}}>
+                    <View>
+                        <Text darkColor="black">Mathieu ALBIN</Text>
+                        <Paragraph>mathiiew972@gmail.com</Paragraph>
+                        <Paragraph>0695342355</Paragraph>
+                    </View>
+                    <View style={styles.separator}></View>
                     <Button textColor="green" mode="outlined">Modifier</Button>
                 </View>
-                <View>
-                    <Paragraph>
-                        Change Password
-                        <TextInput mode="outlined" activeOutlineColor="green" label="password" style={{ margin: 5 }} />
-                        <TextInput mode="outlined" activeOutlineColor="green" label="confirmation" style={{ margin: 5 }} />
-                    </Paragraph>
-                    <Button textColor="green" mode="outlined">Valider</Button>
+                <View style={styles.separator}></View>
+                <View style={{display: "flex", alignItems: "center"}}>
+                    <Text darkColor="black" style={{fontSize:15, fontWeight:"bold"}}>Change Password</Text>
+                    <TextInput mode="outlined" activeOutlineColor="green" label="password" style={{ margin: 5 }} />
+                    <TextInput mode="outlined" activeOutlineColor="green" label="confirmation" style={{ margin: 5 }} />
+                    <Button textColor="green" mode="outlined" style={{marginTop:10}}>Valider</Button>
                 </View>
            </ImageBackground>
         </View>
@@ -40,7 +43,7 @@ export default function UserScreen({ navigation }: RootStackScreenProps<'User'>)
         separator: {
           marginVertical: 30,
           height: 1,
-          width: '80%',
+          width: '5%',
         },
         image: {
           flex: 1,
