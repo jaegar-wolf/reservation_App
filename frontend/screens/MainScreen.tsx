@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet, Image, ImageBackground } from 'react-native';
+import { Platform, StyleSheet, Image, ImageBackground,Alert } from 'react-native';
 import * as React from 'react';
+import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import EditScreenInfo from '../components/EditScreenInfo';
-import { Button, Text, View } from '../components/Themed';
+import { Text, View, } from '../components/Themed';
 import { UserContext } from '../contexts/UserContext';
 import { RootStackScreenProps } from '../types';
 import { Asset } from 'expo-asset';
@@ -33,15 +34,15 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
       Zone of zen se fera un plaisir de s'occuper de vous aussi bien des femmes que des hommes.
       Dans un ambiance chaleureuse,souritante et reposante ici le temps marque une pause, la votre.
       </Text>
-
-      <Text style = {styles.title}>
-      Eveillez vous !
-      </Text>
+      <Button
+      text='Découvrir'
+        onPress={() => Alert.alert('Simple Button pressed')}
+      />
       </ImageBackground>
       
     </View>
     <View style={{flexGrow: 1, backgroundColor: '#fefae0', alignItems: 'center'}}>
-      <Image
+      {/* <Image
         source={require('../assets/images/Background.jpg')} 
         style={{
           position: 'absolute',
@@ -51,12 +52,10 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
           resizeMode:'repeat',
           height: '100%',
           width: '100%'}}
-      ></Image>
+      ></Image> */}
       
-      <Text style = {styles.text_introduction}>
-      En franchissant les portes de notre centre de beauté, vous pénéterez dans un havre où calme et professionnalisme se conjugent au bénéfice de la beauté et du soin et où vous laisserez derrière vous l'agitation urbaine. 
-      Zone of zen se fera un plaisir de s'occuper de vous aussi bien des femmes que des hommes.
-      Dans un ambiance chaleureuse,souritante et reposante ici le temps marque une pause, la votre.
+      <Text style = {styles.title}>
+          Nos offres  
       </Text>
 
         
@@ -83,9 +82,10 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 20,
-    color:'gold',
-    fontWeight: 'bold',
-    fontFamily:'angel', 
+    color:'black',
+    fontFamily:'San-Franisco',
+    marginTop:10,
+  
   },
 
 
