@@ -11,24 +11,10 @@ import { Asset } from 'expo-asset';
 export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>) {
   const {token} = React.useContext(UserContext);
   return (
-    // <View style={styles.container}>
-    //   <ImageBackground source={require("../assets/images/Background.jpg")} resizeMode="cover" style={styles.image}>
-    // <View> 
-    //     <View style={{flex:1}}>
-    //         <Text> En franchissant les portes de notre centre de beauté, vous pénéterez dans un havre où calme et professionnalisme se conjugent au bénéfice de la beauté et du soin et où vous laisserez derrière vous l'agitation urbaine. Zone of zen se fera un plaisir de s'occuper de vous aussi bien des femmes que des hommes.Dans un ambiance chaleureuse,souritante et reposante ici le temps marque une pause, la votre.
-    //         </Text>
-    //     </View>
   
-    //      <View style={{flex:1}} >
-    //       <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    //       </Text>
-    //     </View>   
-      
-    // </View> 
-
     <View style={{flex: 1}}>
     <View style={styles.Presenation}>
-      <ImageBackground source = {require("../assets/images/presentation.jpg")} resizeMode="cover" style={styles.image}>
+      <ImageBackground source = {require("../assets/images/presentation.jpg")}  blurRadius={3} resizeMode="cover" style={styles.image}>
         <Text style = {styles.text_introduction}>
           En franchissant les portes de notre centre de beauté, vous pénéterez dans un havre où calme et professionnalisme se conjugent au bénéfice de la beauté et du soin et où vous laisserez derrière vous l'agitation urbaine. 
           Zone of zen se fera un plaisir de s'occuper de vous aussi bien des femmes que des hommes.
@@ -40,24 +26,17 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
       </ImageBackground>
       
     </View>
-    <View style={{flexGrow: 1, backgroundColor: '#fefae0', alignItems: 'center'}}>
-      {/* <Image
-        source={require('../assets/images/Background.jpg')} 
-        style={{
-          position: 'absolute',
-          top: -40,
-          borderColor:"green",
-          borderWidth : 10,
-          resizeMode:'repeat',
-          height: '100%',
-          width: '100%'}}
-      ></Image> */}
-      
+    <View style={{flexGrow: 1, backgroundColor: '#dda15e', alignItems: 'center',display:'flex'}}>
+
       <Text style = {styles.title}>
           Nos offres  
       </Text>
-
-        
+      <View style={{flexDirection:'row',flexWrap:'wrap',justifyContent:'center'}}>
+      <Image source={require("../assets/images/1.png")} style={styles.offres}></Image>
+      <Image source={require("../assets/images/2.png")} style={styles.offres}></Image>
+      <Image source={require("../assets/images/3.png")} style={styles.offres}></Image>
+      <Image source={require("../assets/images/4.png")} style={styles.offres}></Image>
+      </View>
     </View>
   </View>
   )
@@ -96,9 +75,8 @@ const styles = StyleSheet.create({
   },
 
   Presenation : {
-    height:"70vh",
+    height:"50vh",
     alignItems:'center',
-   // alignContent:'center',
     justifyContent:'center',
     
   },
@@ -113,20 +91,20 @@ const styles = StyleSheet.create({
   },
 
   text_introduction: {
-    color: "black",
-    fontSize: 13,
-    width:"50%",
+    color: "white",
+    fontSize: 10,
+    width:"40%",
     marginTop:50,
     fontWeight:'bold',
 
   },
 
-  text_article: {
-    fontSize: 18,
-    lineHeight: 20,
-    width : 500,
-    borderColor:"green",
-    borderWidth : 10,
+  offres : {
+    width:200,
+    height:'30vh',
+    margin:10,
+   
+  
   },
 
   
