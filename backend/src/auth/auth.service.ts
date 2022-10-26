@@ -1,39 +1,37 @@
-import { Injectable } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
+import { Injectable, Logger } from '@nestjs/common';
+import { UserService } from 'src/user/user.service';
 import { JwtService } from '@nestjs/jwt';
-var randtoken = require('rand-token');
 import * as bcrypt from 'bcrypt';
+
 
 @Injectable()
 export class AuthService {
-  constructor(private usersService: UsersService,
-              private jwtService: JwtService) {}
+    constructor(private userService: UserService, private jwtService: JwtService){}
 
-  async validateUser(username: string, pass: string): Promise<any> {
-    const user = await this.usersService.findOne(username);
-    if (user) {
-      const { password, ...result } = user;
-      const isMatch = await bcrypt.compare(pass, user.password);
-      if(isMatch){
-        return result;
-      }
+    async validateUser(login: string, pass: string): Promise<any>{
+        const user = await this.userService.findUser(login).catch(err => console.log(err))
+        if(!user){
+            return null
+        }
+        else if(user.email && await this.match(user.password, pass)){
+            return user
+        }
+        return null;
     }
-    return null;
-  }
 
-  async generateRefreshToken(userId: any):  Promise<string>{
-    var refreshToken = randtoken.generate(16);
-    var expirydate =new Date();
-    expirydate.setDate(expirydate.getDate() + 6);
-    await this.usersService.saveorupdateRefreshToke(refreshToken, userId, expirydate);
-    return refreshToken
-  }
+    async login(user: any){
+        const payload = {
+            login: user.email, 
+            id: user.user_id,
+            name: user.firstname, 
+        }
+        return {
+            acces_token: this.jwtService.sign(payload)
+        }
+    }
 
-  async login(user: any) {
-    const payload = { username: user.email, sub: user.id };
-    return {
-      access_token: this.jwtService.sign(payload),
-      refresh_token: await this.generateRefreshToken(user.id)
-    };
-  }
+    async match(hashedPassword: any, password: string){
+        const isMatch = await bcrypt.compare(password, hashedPassword)
+        return isMatch
+    }
 }

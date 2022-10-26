@@ -5,6 +5,6 @@ export class TypeUser{
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ length: 45 })
+    @Column({ length: 45})
     name:string;
 }
