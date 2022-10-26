@@ -3,7 +3,7 @@
  * https://docs.expo.io/guides/color-schemes/
  */
 
-import { Text as DefaultText, View as DefaultView, Image, Pressable, PressableProps} from 'react-native';
+import { Text as DefaultText, View as DefaultView, Image,ImageBackground, Pressable, PressableProps} from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -40,22 +40,19 @@ export function Text(props: TextProps) {
 
 export function View(props: ViewProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
-  const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
+  //const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
-  return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
+  return <DefaultView style={[style]} {...otherProps} />;
 }
 
 export function Header(props: ViewProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const theme = useColorScheme();
-  const selectedTheme= theme=='light'?'dark': 'light';
-
-  return <View style={[{ backgroundColor: Colors[selectedTheme].background, flexDirection:"row", alignItems:"center"}, style]} {...otherProps}>
-            <Image style={{width:50, height:50, margin:20}}
-                   source={require("../assets/images/icon.png")}/>
-            <Text style={{color:Colors[selectedTheme].text, textAlign:"center", flex:1}}>APP Title</Text>
-
-          </View>;
+  const selectedTheme= theme=='light'?'pastel': 'pastel';
+  return <View style={[{ backgroundColor: Colors[selectedTheme].background, flexDirection:"row", justifyContent:"center", alignItems:"center",height:100}, style]} {...otherProps}>
+            <Image style={{width:100, height:150}}
+                   source={require("../assets/images/Logo.png")}/>
+                   </View>;
 }
 
 export function Button(props: ButtonProps) {
@@ -68,5 +65,7 @@ export function Button(props: ButtonProps) {
             <Text style={{color: Colors[selectedTheme].text}}>{text}</Text>
           </Pressable>;
 }
+
+
 
 
