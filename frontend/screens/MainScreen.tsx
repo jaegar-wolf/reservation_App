@@ -34,10 +34,9 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
       Zone of zen se fera un plaisir de s'occuper de vous aussi bien des femmes que des hommes.
       Dans un ambiance chaleureuse,souritante et reposante ici le temps marque une pause, la votre.
       </Text>
-      <Button
-      text='Découvrir'
-        onPress={() => Alert.alert('Simple Button pressed')}
-      />
+      <Button onPress={() => Alert.alert('Simple Button pressed')}>
+        Découvrir
+      </Button>
       </ImageBackground>
       
     </View>
