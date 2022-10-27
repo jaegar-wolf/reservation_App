@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, ImageBackground } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
@@ -8,8 +8,10 @@ import { RootStackScreenProps } from '../types';
 export default function ArticleScreen({ navigation }: RootStackScreenProps<'Article'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Article</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+       <ImageBackground source = {require("../assets/images/Background.jpg")} resizeMode="repeat" style={styles.image}>
+          <Text style={styles.title}>Article</Text>
+          <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+       </ImageBackground>
     </View>
   );
 }
@@ -17,8 +19,7 @@ export default function ArticleScreen({ navigation }: RootStackScreenProps<'Arti
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: "100%"
   },
   title: {
     fontSize: 20,
@@ -29,4 +30,10 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+  image: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+    
+  }
 });

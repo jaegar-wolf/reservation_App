@@ -18,7 +18,7 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
           value={email} onChangeText={email => setEmail(email)} />
         <TextInput mode="outlined" label="Password" activeOutlineColor="green" secureTextEntry={true} style={{ margin: 5 }} 
           value={password} onChangeText={password => setPassword(password)}/>
-        <Button style={{ marginTop: 10}} textColor="green" mode="outlined" onPress={() => navigation.navigate("Article")}>
+        <Button style={{ marginTop: 10}} textColor="green" mode="outlined" onPress={() => navigation.navigate("Reservation")}>
           Sign In
         </Button>
         <Button style={{marginTop: 20}} buttonColor="#e9f5db" textColor='black' mode='outlined' onPress={() => navigation.navigate("Inscription")}>
