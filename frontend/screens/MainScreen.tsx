@@ -23,7 +23,7 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
         <Text style = {styles.text}>
         Dans un ambiance chaleureuse,souritante et reposante ici le temps marque une pause, la votre.
         </Text>
-        <Button style = {styles.button} onPress={() => Alert.alert('Simple Button pressed')}>
+        <Button style = {styles.button} onPress={() => navigation.navigate("Login")}>
           <Text style={styles.text}>Nous rejoindre</Text>
         </Button>
       </ImageBackground>
