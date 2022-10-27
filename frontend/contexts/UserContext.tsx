@@ -2,22 +2,19 @@ import React from 'react';
 
 // Declaring the state object globally.
 const initialUserState = {
-  token: "tfytfyf",//localStorage.getItem("token"),
-  refeshToken: localStorage.getItem("refeshToken"),
+  token:localStorage.getItem("token"),
 };
 
 const userContextWrapper = (component?: React.Component) => ({
   ...initialUserState,
-  setTokens: (token: string, refeshToken: string) => {
+  setTokens: (token: string) => {
     initialUserState.token = token;
-    initialUserState.refeshToken = refeshToken;
     localStorage.setItem("token", token)
-    localStorage.setItem("refeshToken", refeshToken)
     component?.setState({ context: userContextWrapper(component) });
   },
   removeTokens: () => {
     initialUserState.token = "";
-    initialUserState.refeshToken = "";
+    localStorage.removeItem("token")
     component?.setState({ context: userContextWrapper(component) });
   },
 });

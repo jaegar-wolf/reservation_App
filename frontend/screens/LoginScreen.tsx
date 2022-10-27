@@ -1,14 +1,30 @@
-import * as React from 'react';
+import {useState, useContext} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet, ImageBackground } from 'react-native';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootStackScreenProps } from '../types';
 import { TextInput, Button } from 'react-native-paper';
+import { login } from '../services/AuthService';
+import { UserContext } from '../contexts/UserContext';
+import { LoginResponse } from '../services/AuthService';
 
 export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'>) {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { setTokens } = useContext(UserContext)
+
+  function connect(email:string, password:string){
+    if(email && password){
+      login(email,password).then( (data) => {
+          if(data == 401) {
+            
+          }
+          setTokens(String(data.access_token))
+      }).catch(err => console.log(err, "Identifiant ou mot de passe incorrecte"))
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -18,7 +34,7 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
           value={email} onChangeText={email => setEmail(email)} />
         <TextInput mode="outlined" label="Password" activeOutlineColor="green" secureTextEntry={true} style={{ margin: 5 }} 
           value={password} onChangeText={password => setPassword(password)}/>
-        <Button style={{ marginTop: 10}} textColor="green" mode="outlined" onPress={() => navigation.navigate("Reservation")}>
+        <Button style={{ marginTop: 10}} textColor="green" mode="outlined" onPress={() => connect(email, password)}>
           Sign In
         </Button>
         <Button style={{marginTop: 20}} buttonColor="#e9f5db" textColor='black' mode='outlined' onPress={() => navigation.navigate("Inscription")}>
@@ -28,10 +44,6 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
       </ImageBackground>
     </View>
   );
-}
-
-function login(email:string, password:string){
-
 }
 
 const styles = StyleSheet.create({

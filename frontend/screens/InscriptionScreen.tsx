@@ -5,8 +5,13 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootStackScreenProps } from '../types';
 import { TextInput, Button } from 'react-native-paper';
+import { useState } from 'react';
 
 export default function InscriptionScreen({ navigation }: RootStackScreenProps<'Inscription'>) {
+  const [firstname, setFirstname ] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <View style={styles.container}>
       <ImageBackground source = {require("../assets/images/Background.jpg")} resizeMode="repeat" style={styles.image}>
@@ -19,6 +24,9 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
         <TextInput mode="outlined" activeOutlineColor="green" label="Confirmation Password" secureTextEntry={true} style={{ margin: 5 }} />
         <Button mode="outlined" textColor='green' style={{ marginTop: 10}} onPress={() => console.log('Pressed')}>
           Create Account
+        </Button>
+        <Button buttonColor="#e9f5db" textColor='black' mode='outlined' style={{ marginTop: 10}} onPress={() => navigation.navigate("Login")}>
+          Log in
         </Button>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       </ImageBackground>
