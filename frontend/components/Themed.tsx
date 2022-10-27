@@ -48,10 +48,10 @@ export function View(props: ViewProps) {
 export function Header(props: ViewProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const theme = useColorScheme();
-  const selectedTheme= theme=='light'?'pastel': 'pastel';
+  const selectedTheme= theme=='light'?'dark': 'dark';
   return <View style={[{ backgroundColor: Colors[selectedTheme].background, flexDirection:"row", justifyContent:"center", alignItems:"center",height:100}, style]} {...otherProps}>
             <Image style={{width:100, height:150}}
-                   source={require("../assets/images/Logo.png")}/>
+                   source={require("../assets/images/logo.png")}/>
                    </View>;
 }
 

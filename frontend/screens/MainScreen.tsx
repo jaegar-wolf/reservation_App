@@ -14,20 +14,24 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
   
     <View style={{flex: 1}}>
     <View style={styles.Presenation}>
-      <ImageBackground source = {require("../assets/images/presentation.jpg")}  blurRadius={3} resizeMode="cover" style={styles.image}>
-        <Text style = {styles.text_introduction}>
-          En franchissant les portes de notre centre de beauté, vous pénéterez dans un havre où calme et professionnalisme se conjugent au bénéfice de la beauté et du soin et où vous laisserez derrière vous l'agitation urbaine. 
-          Zone of zen se fera un plaisir de s'occuper de vous aussi bien des femmes que des hommes.
-          Dans un ambiance chaleureuse,souritante et reposante ici le temps marque une pause, la votre.
+      <ImageBackground source = {require("../assets/images/5.jpg")} blurRadius={5} resizeMode="cover" style={styles.image}>
+        <Text style = {styles.title}>
+          Une experience unique, seulement sur Zone of Zen.
+          
         </Text>
-        <Button onPress={() => Alert.alert('Simple Button pressed')}>
-          Découvrir
+
+        <Text style = {styles.text}>
+        Dans un ambiance chaleureuse,souritante et reposante ici le temps marque une pause, la votre.
+        </Text>
+        <Button style = {styles.button} onPress={() => Alert.alert('Simple Button pressed')}>
+          <Text style={styles.text}>Nous rejoindre</Text>
         </Button>
       </ImageBackground>
       
     </View>
-    <View style={{flexGrow: 1, backgroundColor: '#dda15e', alignItems: 'center',display:'flex'}}>
-
+    <View style={{flexGrow: 1, backgroundColor: 'black', alignItems: 'center',display:'flex'}}>
+    <ImageBackground source = {require("../assets/images/cover.png")} blurRadius={5} resizeMode="cover" style={styles.image}>
+        <Text style = {styles.title}></Text>
       <Text style = {styles.title}>
           Nos offres  
       </Text>
@@ -37,6 +41,7 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
       <Image source={require("../assets/images/3.png")} style={styles.offres}></Image>
       <Image source={require("../assets/images/4.png")} style={styles.offres}></Image>
       </View>
+      </ImageBackground>
     </View>
   </View>
   )
@@ -59,13 +64,22 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 20,
-    color:'black',
+    fontSize: 15,
+    color:'#fdb833',
     fontFamily:'San-Franisco',
     marginTop:10,
   
   },
 
+  button: {
+    alignItems: 'center',
+    marginBottom:10,
+    paddingHorizontal: 1,
+    borderRadius: 3,
+    marginTop:15,
+    elevation: 1,
+    backgroundColor: 'black',
+  },
 
   image: {
     flex: 1,
@@ -75,10 +89,10 @@ const styles = StyleSheet.create({
   },
 
   Presenation : {
-    height:"50vh",
+    height:"30vh",
     alignItems:'center',
     justifyContent:'center',
-    
+    backgroundColor:"#fefae0",    
   },
 
   separator: {
@@ -91,10 +105,20 @@ const styles = StyleSheet.create({
   },
 
   text_introduction: {
-    color: "white",
-    fontSize: 10,
+    color: "#bc6c25",
+    fontSize: 15,
     width:"40%",
     marginTop:50,
+    fontFamily:'San-Franisco',
+    fontWeight:'bold',
+
+  },
+  text: {
+    color: "#bc6c25",
+    fontSize: 10,
+    width:"90%",
+    marginTop:3,
+    fontFamily:'San-Franisco',
     fontWeight:'bold',
 
   },
@@ -103,8 +127,6 @@ const styles = StyleSheet.create({
     width:200,
     height:'30vh',
     margin:10,
-   
-  
   },
 
   
