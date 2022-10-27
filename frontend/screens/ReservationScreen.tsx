@@ -19,7 +19,7 @@ export default function ReservationScreen({ navigation }: RootStackScreenProps<'
     const onDismissSnackBar = () => setVisible(false);
 
     return (
-        <View style={styles.container}>
+      <View style={styles.container}>
               <Text style={styles.title}>Reservation</Text>
               <Card style={{ width: "75%", marginTop: 10}}>
                 <Card.Content style={{display:"flex", alignItems:"center"}}>
@@ -57,8 +57,8 @@ export default function ReservationScreen({ navigation }: RootStackScreenProps<'
                 }}>
                 Rendez-vous validé
               </Snackbar>
-        </View>
-      );
+      </View>
+    );
 }
 
     const styles = StyleSheet.create({
