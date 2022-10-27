@@ -23,9 +23,13 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
         <Text style = {styles.text}>
         Dans un ambiance chaleureuse,souritante et reposante ici le temps marque une pause, la votre.
         </Text>
+        {!token? 
         <Button style = {styles.button} onPress={() => navigation.navigate("Login")}>
           <Text style={styles.text}>Nous rejoindre</Text>
         </Button>
+        :
+        <View/>
+        }
       </ImageBackground>
       
     </View>
@@ -43,15 +47,21 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
         decelerationRate="fast"
         pagingEnabled>
           
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+        <TouchableOpacity onPress={() => {
+          !token ? navigation.navigate("Login") : navigation.navigate("Article")
+          }}>
         <Image source={require("../assets/images/2.png")} style={styles.offres} ></Image>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+        <TouchableOpacity onPress={() => {
+          !token ? navigation.navigate("Login") : navigation.navigate("Article")
+          }}>
         <Image source={require("../assets/images/3.png")} style={styles.offres} ></Image>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+        <TouchableOpacity onPress={() => {
+          !token ? navigation.navigate("Login") : navigation.navigate("Article")
+          }}>
         <Image source={require("../assets/images/4.png")} style={styles.offres} ></Image>
         </TouchableOpacity>
 
@@ -123,7 +133,7 @@ const styles = StyleSheet.create({
 
   text_introduction: {
     color: "#bc6c25",
-    fontSize: 15,
+    fontSize: 19,
     width:"40%",
     marginTop:50,
     fontFamily:'San-Franisco',
@@ -132,7 +142,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#bc6c25",
-    fontSize: 10,
+    fontSize: 14.5,
     width:"90%",
     marginTop:3,
     fontFamily:'San-Franisco',

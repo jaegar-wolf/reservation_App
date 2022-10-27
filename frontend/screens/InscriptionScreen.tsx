@@ -39,7 +39,6 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
 
   return (
     <View style={styles.container}>
-       <ImageBackground source = {require("../assets/images/cover.png")} blurRadius={0} resizeMode="cover" style={styles.image}>
         <Text style={styles.title}>Registration</Text>
         <TextInput mode="outlined" activeOutlineColor="black" label="First Name" style={{ margin: 5 }}  
           value={user.firstname} 
@@ -59,14 +58,13 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
         <TextInput mode="outlined" activeOutlineColor="black" label="Confirmation Password" secureTextEntry={true} style={{ margin: 5 }}
           value={confirmation}
           onChangeText={value => setConfirmation(value)} />
-        <Button mode="outlined" textColor='#fdb833' style={{ marginTop: 10}} onPress={() => newAccount(user)}>
+        <Button textColor="black" buttonColor="#fdb833" mode="contained" style={{ marginTop: 10}} onPress={() => newAccount(user)}>
           Create Account
         </Button>
-        <Button buttonColor="black" textColor='#fdb833' mode='contained' style={{ marginTop: 10}} onPress={() => navigation.navigate("Login")}>
+        <Button mode="outlined" buttonColor="black" textColor="#fdb833" style={{ marginTop: 10}} onPress={() => navigation.navigate("Login")}>
           Log in
         </Button>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      </ImageBackground>
     </View>
   );
 }
@@ -74,7 +72,10 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "100%"
+    width: "100%",
+    backgroundColor:"black",
+    alignItems: "center",
+    justifyContent: "center"
   },
   title: {
     fontSize: 20,
