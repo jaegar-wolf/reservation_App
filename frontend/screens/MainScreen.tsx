@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet, Image, ImageBackground,Alert } from 'react-native';
+import { Platform, StyleSheet, Image, ImageBackground,Alert, ScrollView } from 'react-native';
 import * as React from 'react';
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import EditScreenInfo from '../components/EditScreenInfo';
@@ -31,15 +31,22 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
     </View>
     <View style={{flexGrow: 1, backgroundColor: 'black', alignItems: 'center',display:'flex'}}>
     <ImageBackground source = {require("../assets/images/cover.png")} blurRadius={5} resizeMode="cover" style={styles.image}>
-        <Text style = {styles.title}></Text>
-      <Text style = {styles.title}>
+      <Text style = {styles.text_offre}>
           Nos offres  
       </Text>
       <View style={{flexDirection:'row',flexWrap:'wrap',justifyContent:'center'}}>
+       <ScrollView
+        horizontal={true}
+        contentContainerStyle={{width:innerWidth}} 
+        showsHorizontalScrollIndicator={false}
+        scrollEventThrottle={200}
+        decelerationRate="fast"
+        pagingEnabled>
       <Image source={require("../assets/images/1.png")} style={styles.offres}></Image>
       <Image source={require("../assets/images/2.png")} style={styles.offres}></Image>
       <Image source={require("../assets/images/3.png")} style={styles.offres}></Image>
       <Image source={require("../assets/images/4.png")} style={styles.offres}></Image>
+      </ScrollView>
       </View>
       </ImageBackground>
     </View>
@@ -68,6 +75,7 @@ const styles = StyleSheet.create({
     color:'#fdb833',
     fontFamily:'San-Franisco',
     marginTop:10,
+ 
   
   },
 
@@ -123,11 +131,20 @@ const styles = StyleSheet.create({
 
   },
 
+  text_offre: {
+    fontSize: 15,
+    color:'#fdb833',
+    fontFamily:'San-Franisco',
+    marginBottom:50,
+  },
+
   offres : {
     width:200,
     height:'30vh',
     margin:10,
-  },
+    borderBottomStartRadius:30,
+    borderTopLeftRadius:30,
+   },
 
   
 });
