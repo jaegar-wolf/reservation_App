@@ -1,8 +1,23 @@
 import React from 'react';
+import { getUser, UpdateUser } from '../services/userService';
 
+export type User = {
+  user_id:number,
+  firstname:string,
+  lastname:string,
+  phone:string,
+  email:string,
+}
 // Declaring the state object globally.
 const initialUserState = {
   token:localStorage.getItem("token"),
+  user:{
+    user_id:0,
+    firstname:sessionStorage.getItem("firstname"),
+    lastname:sessionStorage.getItem("lastname"),
+    phone:sessionStorage.getItem("phone"),
+    email:sessionStorage.getItem("email"),
+  }
 };
 
 const userContextWrapper = (component?: React.Component) => ({
@@ -17,6 +32,28 @@ const userContextWrapper = (component?: React.Component) => ({
     localStorage.removeItem("token")
     component?.setState({ context: userContextWrapper(component) });
   },
+  setUser: (user:User) => {
+    initialUserState.user = user;
+    sessionStorage.setItem("firstname", user.firstname)
+    sessionStorage.setItem("lastname", user.lastname)
+    sessionStorage.setItem("phone", user.phone)
+    sessionStorage.setItem("email", user.email)
+    component?.setState({ context: userContextWrapper(component) });
+  },
+  removeUser: () => {
+    initialUserState.user = {
+      user_id:0,
+      firstname:"",
+      lastname:"",
+      phone:"",
+      email:"",
+    }
+    sessionStorage.removeItem("firstname")
+    sessionStorage.removeItem("lastname")
+    sessionStorage.removeItem("phone")
+    sessionStorage.removeItem("email")
+    component?.setState({ context: userContextWrapper(component) });
+  }
 });
 
 type Context = ReturnType<typeof userContextWrapper>;

@@ -29,6 +29,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee, faDumbbell, faUser, faHouse, faCalendarCheck, faCircleUser, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import UserScreen from '../screens/UserScreen';
 import Chatbox from '../screens/Chatbox';
+import { getUser } from '../services/userService';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -50,7 +51,7 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
-  const {token} = React.useContext(UserContext);
+  const {token, setUser} = React.useContext(UserContext);
   if(!token){
     return (
       <Stack.Navigator>

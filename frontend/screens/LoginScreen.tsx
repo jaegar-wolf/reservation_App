@@ -8,21 +8,30 @@ import { TextInput, Button } from 'react-native-paper';
 import { login } from '../services/AuthService';
 import { UserContext } from '../contexts/UserContext';
 import { LoginResponse } from '../services/AuthService';
+import { getUser } from '../services/userService';
 
 export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'>) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setTokens } = useContext(UserContext)
+  const { setTokens, setUser, token } = useContext(UserContext)
 
   function connect(email:string, password:string){
     if(email && password){
-      login(email,password).then( (data) => {
-          if(data == 401) {
-            
+      login(email,password).then( (response) => {
+          const { status, data } = response
+          if(status === 401) {
+            console.log("Identifiant ou mot de passe incorrecte")
+            return 
           }
-          setTokens(String(data.access_token))
-      }).catch(err => console.log(err, "Identifiant ou mot de passe incorrecte"))
+          setTokens(String(data.acces_token))
+          getUser().then(response => {
+            const {status, data} = response
+            if(status == 200){
+              setUser(data)
+            }
+          }).catch(err => console.log(err))
+      }).catch(err => console.log(err))
     }
   }
 
