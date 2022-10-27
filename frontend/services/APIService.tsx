@@ -1,7 +1,9 @@
-import { refreshToken } from "./AuthService";
+import { AxiosInstance } from "axios";
+import axios from "axios";
 
-const axios = require('axios');
-export const axiosApiInstance = axios.create();
+export const axiosApiInstance: AxiosInstance = axios.create({
+   baseURL: "http://localhost:3000/"
+});
 
 // Request interceptor for API calls
 axiosApiInstance.interceptors.request.use(
@@ -10,25 +12,14 @@ axiosApiInstance.interceptors.request.use(
         'Authorization': `Bearer ${localStorage.getItem("token")}`,
       }
       return config;
-    },
-    (error:any) => {
-      Promise.reject(error)
-  });
+    });
 
 // Response interceptor for API calls
 axiosApiInstance.interceptors.response.use((response : any) => {
   return response
 }, async function (error :any) {
-  const originalRequest = error.config;
-  if (error.response.status === 401 && !originalRequest._retry) {
-    originalRequest._retry = true;
-    let token= localStorage.getItem("token");
-    let refeshToken=  localStorage.getItem("refeshToken");
-    let tokens: any= await refreshToken({access_token: token, refresh_token: refeshToken});
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + tokens.access_token;
-    localStorage.setItem("token", tokens.access_token)
-    localStorage.setItem("refeshToken", tokens.refresh_token)
-    return axiosApiInstance(originalRequest);
+  if (error.response.status === 401) {
+    localStorage.removeItem("token")
+    return error.response.status
   }
-  return Promise.reject(error);
 });
