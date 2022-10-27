@@ -43,11 +43,6 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
         decelerationRate="fast"
         pagingEnabled>
           
-
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-        <Image source={require("../assets/images/1.png")} style={styles.offres} ></Image>
-        </TouchableOpacity>
-
         <TouchableOpacity onPress={() => navigation.navigate("Login")}>
         <Image source={require("../assets/images/2.png")} style={styles.offres} ></Image>
         </TouchableOpacity>

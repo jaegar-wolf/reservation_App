@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
   },
   helpLink: {
     paddingVertical: 15,
+  
   },
   helpLinkText: {
     textAlign: 'center',
