@@ -83,10 +83,12 @@ function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
   return (
-    <BottomTab.Navigator
+    <BottomTab.Navigator 
       initialRouteName="Main"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarActiveTintColor: "#fdb833",
+        tabBarActiveBackgroundColor:"black",
+        tabBarInactiveBackgroundColor:"black",
       }}>
       <BottomTab.Screen
         name="Main"
@@ -94,7 +96,7 @@ function BottomTabNavigator() {
         options={{
           title: 'Accueil',
           headerShown:false,
-          tabBarIcon: ({ color="green" }) => <FontAwesomeIcon icon={faHouse} color={color}/>,
+          tabBarIcon: ({ color }) => <FontAwesomeIcon icon={faHouse} color={color}/>,
         }}
       />
       <BottomTab.Screen
