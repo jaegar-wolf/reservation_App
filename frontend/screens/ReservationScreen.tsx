@@ -1,35 +1,46 @@
 import { RootStackScreenProps } from "../types";
 import { Text, View } from '../components/Themed';
 import { Platform, StyleSheet, ImageBackground } from 'react-native';
-import { Button, Paragraph, Dialog, Portal, Provider } from 'react-native-paper';
-import * as React from 'react';
+import { Button, Paragraph, Dialog, Portal, Provider, RadioButton, Card } from 'react-native-paper';
+import { useState } from "react";
+import  DtPicker  from 'react-calendar-datetime-picker'
+import 'react-calendar-datetime-picker/dist/index.css'
 
 export default function ReservationScreen({ navigation }: RootStackScreenProps<'Reservation'>){
-    const [visible, setVisible] = React.useState(false);
 
-    const showDialog = () => setVisible(true);
-  
-    const hideDialog = () => setVisible(false);
+    const [value, setValue] = useState('first');
+
+    const [date, setDate] = useState(null)
+
     return (
         <View style={styles.container}>
-           <ImageBackground source = {require("../assets/images/Background.jpg")} resizeMode="repeat" style={styles.image}>
+           <ImageBackground source = {require("../assets/images/cover.png")} blurRadius={0} resizeMode="cover" style={styles.image}>
               <Text style={styles.title}>Reservation</Text>
-              <Provider>
+              <Card style={{ width: "75%", marginTop: 10}}>
+                <Card.Content style={{display:"flex", alignItems:"center"}}>
                 <View>
-                    <Button onPress={showDialog}>Choisir Prestation</Button>
-                    <Portal>
-                    <Dialog visible={visible} onDismiss={hideDialog}>
-                        <Dialog.Title>Alert</Dialog.Title>
-                        <Dialog.Content>
-                        <Paragraph>This is simple dialog</Paragraph>
-                        </Dialog.Content>
-                        <Dialog.Actions>
-                        <Button onPress={hideDialog}>Done</Button>
-                        </Dialog.Actions>
-                    </Dialog>
-                    </Portal>
+                  <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
+                    <RadioButton.Item label="Séance de Yoga" color="green" value="first" />
+                    <RadioButton.Item label="Massage à l'huile" color="green" value="second" />
+                    <RadioButton.Item label="Séance de Yoga" color="green" value="third" />
+                    <RadioButton.Item label="Massage à l'huile" color="green" value="fourth" />
+                  </RadioButton.Group>
                 </View>
-                </Provider>
+                <View style={{ width:"40%"}}>
+                  <DtPicker
+                    onChange={setDate}
+                    type='single'
+                    local='en'
+                    withTime
+                    showWeekend
+                    inputClass='black'
+                    daysClass='black'
+                    headerClass='black'
+                  />
+                </View>
+                <Button style={{marginTop:10}} textColor="green" mode="outlined">Valider</Button>
+                </Card.Content>
+              </Card>
            </ImageBackground>
         </View>
       );
@@ -43,6 +54,7 @@ export default function ReservationScreen({ navigation }: RootStackScreenProps<'
         title: {
           fontSize: 20,
           fontWeight: 'bold',
+          color: '#fdb833'
         },
         separator: {
           marginVertical: 30,
@@ -52,7 +64,7 @@ export default function ReservationScreen({ navigation }: RootStackScreenProps<'
         image: {
           flex: 1,
           alignItems: "center",
-          justifyContent: "center"
+          justifyContent: "flex-start"
           
         }
       });

@@ -8,7 +8,7 @@ import { RootStackScreenProps } from '../types';
 export default function ArticleScreen({ navigation }: RootStackScreenProps<'Article'>) {
   return (
     <View style={styles.container}>
-       <ImageBackground source = {require("../assets/images/Background.jpg")} resizeMode="repeat" style={styles.image}>
+       <ImageBackground source = {require("../assets/images/cover.png")} blurRadius={0} resizeMode="cover" style={styles.image}>
           <Text style={styles.title}>Article</Text>
           <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
        </ImageBackground>
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: "#fdb833"
   },
   separator: {
     marginVertical: 30,
