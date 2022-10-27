@@ -20,7 +20,6 @@ import MainScreen from '../screens/MainScreen';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import ReservationScreen from '../screens/ReservationScreen';
-import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { login } from '../services/AuthService';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
