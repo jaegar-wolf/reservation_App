@@ -19,6 +19,7 @@ export type RootStackParamList = {
   Login: undefined;
   Inscription: undefined;
   Reservation: undefined;
+  Chatbox:undefined;
   User: undefined;
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;
@@ -36,6 +37,7 @@ export type RootTabParamList = {
   Login: undefined;
   Reservation:undefined;
   User: undefined;
+  Chatbox:undefined;
   TabOne: undefined;
   TabTwo: undefined;
 };

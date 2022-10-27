@@ -34,6 +34,7 @@ const linking: LinkingOptions<RootStackParamList> = {
       Inscription: 'inscription',
       Reservation:'reservation',
       Modal: 'modal',
+      Chatbox:'chatbox',
       NotFound: '*',
     },
   },

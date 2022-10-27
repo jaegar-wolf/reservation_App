@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet, Image, ImageBackground,Alert, ScrollView } from 'react-native';
+import { Platform, StyleSheet, Image, ImageBackground,Alert, ScrollView,TouchableOpacity } from 'react-native';
 import * as React from 'react';
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import EditScreenInfo from '../components/EditScreenInfo';
@@ -42,10 +42,24 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
         scrollEventThrottle={200}
         decelerationRate="fast"
         pagingEnabled>
-      <Image source={require("../assets/images/1.png")} style={styles.offres}></Image>
-      <Image source={require("../assets/images/2.png")} style={styles.offres}></Image>
-      <Image source={require("../assets/images/3.png")} style={styles.offres}></Image>
-      <Image source={require("../assets/images/4.png")} style={styles.offres}></Image>
+          
+
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+        <Image source={require("../assets/images/1.png")} style={styles.offres} ></Image>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+        <Image source={require("../assets/images/2.png")} style={styles.offres} ></Image>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+        <Image source={require("../assets/images/3.png")} style={styles.offres} ></Image>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+        <Image source={require("../assets/images/4.png")} style={styles.offres} ></Image>
+        </TouchableOpacity>
+
       </ScrollView>
       </View>
       </ImageBackground>

@@ -29,6 +29,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee, faDumbbell, faUser, faHouse, faCalendarCheck, faCircleUser, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import UserScreen from '../screens/UserScreen';
+import Chatbox from '../screens/Chatbox';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -59,6 +60,7 @@ function RootNavigator() {
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Reservation" component={ReservationScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Inscription" component={InscriptionScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Chatbox" component={Chatbox} options={{ headerShown: false  }} />
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       </Stack.Navigator>
     );
@@ -67,6 +69,7 @@ function RootNavigator() {
       <Stack.Navigator>
         <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
         <Stack.Screen name="Article" component={ArticleScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Chatbox" component={Chatbox} options={{ headerShown: false  }} />
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       </Stack.Navigator>
     );
