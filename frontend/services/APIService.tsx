@@ -8,9 +8,7 @@ export const axiosApiInstance: AxiosInstance = axios.create({
 // Request interceptor for API calls
 axiosApiInstance.interceptors.request.use(
     async (config: any )=> {
-      config.headers = { 
-        'Authorization': `Bearer ${localStorage.getItem("token")}`,
-      }
+      config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`
       return config;
     });
 
@@ -20,6 +18,6 @@ axiosApiInstance.interceptors.response.use((response : any) => {
 }, async function (error :any) {
   if (error.response.status === 401) {
     localStorage.removeItem("token")
-    return error.response.status
+    return error.response
   }
 });

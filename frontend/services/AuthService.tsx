@@ -16,7 +16,7 @@ export type Registration = {
 
 export async function login(email : string, password : string) {
       // 👇️ const data: LoginResponse
-      const { data } = await axiosApiInstance.post<LoginResponse | any>(
+      const  data  = await axiosApiInstance.post<LoginResponse | any>(
         'auth/login',
         { login: email, password: password },
         {
@@ -31,13 +31,15 @@ export async function login(email : string, password : string) {
   }
 
 export async function createAccount(user: Registration){
-  const {data} = await axiosApiInstance.post<Registration>(
+  const data = await axiosApiInstance.post<Registration | any>(
     'user',
-    { firstname: user.firstname,
+    { 
+      firstname: user.firstname,
       lastname: user.lastname,
       phone: user.phone,
       email: user.email,
-      typeuser_id: 1,
+      password: user.password,
+      typeuser_id: user.typeUser,
     },
     {
       headers: {
