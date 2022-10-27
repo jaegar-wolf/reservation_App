@@ -14,18 +14,18 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
 
   return (
     <View style={styles.container}>
-      <ImageBackground source = {require("../assets/images/Background.jpg")} resizeMode="repeat" style={styles.image}>
+       <ImageBackground source = {require("../assets/images/cover.png")} blurRadius={0} resizeMode="cover" style={styles.image}>
         <Text style={styles.title}>Registration</Text>
-        <TextInput mode="outlined" activeOutlineColor="green" label="First Name" style={{ margin: 5 }} />
-        <TextInput mode="outlined" activeOutlineColor="green" label="Last Name" style={{ margin: 5 }} />
-        <TextInput mode="outlined" activeOutlineColor="green" label="Email" style={{ margin: 10 }} />
-        <TextInput mode="outlined" activeOutlineColor="green" label="Phone" style={{ margin: 10 }} />
-        <TextInput mode="outlined" activeOutlineColor="green" label="Password" secureTextEntry={true} style={{ margin: 5 }} />
-        <TextInput mode="outlined" activeOutlineColor="green" label="Confirmation Password" secureTextEntry={true} style={{ margin: 5 }} />
-        <Button mode="outlined" textColor='green' style={{ marginTop: 10}} onPress={() => console.log('Pressed')}>
+        <TextInput mode="outlined" activeOutlineColor="black" label="First Name" style={{ margin: 5 }} />
+        <TextInput mode="outlined" activeOutlineColor="black" label="Last Name" style={{ margin: 5 }} />
+        <TextInput mode="outlined" activeOutlineColor="black" label="Email" style={{ margin: 10 }} />
+        <TextInput mode="outlined" activeOutlineColor="black" label="Phone" style={{ margin: 10 }} />
+        <TextInput mode="outlined" activeOutlineColor="black" label="Password" secureTextEntry={true} style={{ margin: 5 }} />
+        <TextInput mode="outlined" activeOutlineColor="black" label="Confirmation Password" secureTextEntry={true} style={{ margin: 5 }} />
+        <Button mode="outlined" textColor='#fdb833' style={{ marginTop: 10}} onPress={() => console.log('Pressed')}>
           Create Account
         </Button>
-        <Button buttonColor="#e9f5db" textColor='black' mode='outlined' style={{ marginTop: 10}} onPress={() => navigation.navigate("Login")}>
+        <Button buttonColor="black" textColor='#fdb833' mode='contained' style={{ marginTop: 10}} onPress={() => navigation.navigate("Login")}>
           Log in
         </Button>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
+    color:"#fdb833",
     fontWeight: 'bold',
     marginBottom: 15
   },

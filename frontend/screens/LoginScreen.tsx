@@ -28,16 +28,16 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
 
   return (
     <View style={styles.container}>
-      <ImageBackground source = {require("../assets/images/Background.jpg")} resizeMode="repeat" style={styles.image}>
+      <ImageBackground source = {require("../assets/images/cover.png")} blurRadius={0} resizeMode="cover" style={styles.image}>
         <Text style={styles.title}>Login</Text>
-        <TextInput mode="outlined" label="Email" activeOutlineColor="green" style={{ margin: 5 }} 
+        <TextInput mode="outlined" label="Email" activeOutlineColor="black" style={{ margin: 5 }} 
           value={email} onChangeText={email => setEmail(email)} />
-        <TextInput mode="outlined" label="Password" activeOutlineColor="green" secureTextEntry={true} style={{ margin: 5 }} 
+        <TextInput mode="outlined" label="Password" activeOutlineColor="black" secureTextEntry={true} style={{ margin: 5 }} 
           value={password} onChangeText={password => setPassword(password)}/>
-        <Button style={{ marginTop: 10}} textColor="green" mode="outlined" onPress={() => connect(email, password)}>
+        <Button style={{ marginTop: 10}} textColor="#fdb833" mode="outlined" onPress={() => connect(email, password)}>
           Sign In
         </Button>
-        <Button style={{marginTop: 20}} buttonColor="#e9f5db" textColor='black' mode='outlined' onPress={() => navigation.navigate("Inscription")}>
+        <Button style={{marginTop: 20}} buttonColor="black" textColor='#fdb833' mode='contained' onPress={() => navigation.navigate("Inscription")}>
           New Account
         </Button>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
+    color:'#fdb833',
     fontWeight: 'bold',
     marginBottom: 15,
   },

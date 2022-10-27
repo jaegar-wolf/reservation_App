@@ -16,33 +16,33 @@ export default function UserScreen({ navigation }: RootStackScreenProps<'User'>)
 
     return (
         <View style={styles.container}>
-           <ImageBackground source = {require("../assets/images/Background.jpg")} resizeMode="repeat" style={styles.image}>
+           <ImageBackground source = {require("../assets/images/cover.png")} blurRadius={0} resizeMode="cover" style={styles.image}>
                 <Text style={[styles.title, {marginTop: 10}]} darkColor="dark">User</Text>
-                <Button onPress={() => logout()}>Log Out</Button>
+                <Button mode="contained" buttonColor="black" textColor="#fdb833" style={{ marginTop: 10}} onPress={() => logout()}>Log Out</Button>
                 <View style={{ display: "flex", alignItems:"center", flexDirection:"row", marginTop: 40}}>
                         { !modif? 
                         <View>
-                            <Text darkColor="black">Mathieu ALBIN</Text>
-                            <Paragraph>mathiiew972@gmail.com</Paragraph>
-                            <Paragraph>0695342355</Paragraph>
+                            <Text style={styles.text}>Mathieu ALBIN</Text>
+                            <Paragraph style={styles.text}>mathiiew972@gmail.com</Paragraph>
+                            <Paragraph style={styles.text}>0695342355</Paragraph>
                         </View>
                         : 
                         <View>
-                            <TextInput mode="outlined" activeOutlineColor="green" label="First Name" style={{ margin: 5 }} />
-                            <TextInput mode="outlined" activeOutlineColor="green" label="Last Name" style={{ margin: 5 }} />
-                            <TextInput mode="outlined" activeOutlineColor="green" label="Email" style={{ margin: 5 }} />
-                            <TextInput mode="outlined" activeOutlineColor="green" label="Phone" style={{ margin: 5 }} />
+                            <TextInput mode="outlined" activeOutlineColor="black" label="First Name" style={{ margin: 5 }} />
+                            <TextInput mode="outlined" activeOutlineColor="black" label="Last Name" style={{ margin: 5 }} />
+                            <TextInput mode="outlined" activeOutlineColor="black" label="Email" style={{ margin: 5 }} />
+                            <TextInput mode="outlined" activeOutlineColor="black" label="Phone" style={{ margin: 5 }} />
                         </View>
                         }
                     <View style={styles.separator}></View>
-                    <Button textColor="green" mode="outlined" onPress={ () => setModif(!modif)}>Modifier</Button>
+                    <Button textColor="#fdb833" mode="outlined" onPress={ () => setModif(!modif)}>Modifier</Button>
                 </View>
                 <View style={styles.separator}></View>
                 <View style={{display: "flex", alignItems: "center"}}>
-                    <Text darkColor="black" style={{fontSize:15, fontWeight:"bold"}}>Change Password</Text>
-                    <TextInput mode="outlined" activeOutlineColor="green" label="password" style={{ margin: 5 }} />
-                    <TextInput mode="outlined" activeOutlineColor="green" label="confirmation" style={{ margin: 5 }} />
-                    <Button textColor="green" mode="outlined" style={{marginTop:10}}>Valider</Button>
+                    <Text style={{fontSize:15, fontWeight:"bold", color:"#fdb833"}}>Change Password</Text>
+                    <TextInput mode="outlined" activeOutlineColor="black" label="password" style={{ margin: 5 }} />
+                    <TextInput mode="outlined" activeOutlineColor="black" label="confirmation" style={{ margin: 5 }} />
+                    <Button textColor="#fdb833" mode="outlined" style={{marginTop:10}}>Valider</Button>
                 </View>
            </ImageBackground>
         </View>
@@ -57,6 +57,7 @@ export default function UserScreen({ navigation }: RootStackScreenProps<'User'>)
         title: {
           fontSize: 20,
           fontWeight: 'bold',
+          color:"#fdb833"
         },
         separator: {
           marginVertical: 30,
@@ -68,5 +69,8 @@ export default function UserScreen({ navigation }: RootStackScreenProps<'User'>)
           alignItems: "center",
           justifyContent: "flex-start"
           
+        },
+        text: {
+          color:"#fdb833"
         }
       });
