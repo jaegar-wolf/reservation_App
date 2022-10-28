@@ -7,5 +7,5 @@ export class UserDto {
     phone:string;
     email:string;
     password:string;
-    type:TypeUser;
+    type:number;
 }
