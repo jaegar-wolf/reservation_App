@@ -90,6 +90,7 @@ function BottomTabNavigator() {
       initialRouteName="Main"
       screenOptions={{
         tabBarActiveTintColor: "#fdb833",
+        tabBarInactiveTintColor: "#bc6c25",
         tabBarActiveBackgroundColor:"black",
         tabBarInactiveBackgroundColor:"black",
       }}>

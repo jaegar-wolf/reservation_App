@@ -58,10 +58,10 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
         <TextInput mode="outlined" activeOutlineColor="black" label="Confirmation Password" secureTextEntry={true} style={{ margin: 5 }}
           value={confirmation}
           onChangeText={value => setConfirmation(value)} />
-        <Button textColor="black" buttonColor="#fdb833" mode="contained" style={{ marginTop: 10}} onPress={() => newAccount(user)}>
+        <Button textColor="black" buttonColor="#bc6c25" mode="contained" style={{ marginTop: 10}} onPress={() => newAccount(user)}>
           Create Account
         </Button>
-        <Button mode="outlined" buttonColor="black" textColor="#fdb833" style={{ marginTop: 10}} onPress={() => navigation.navigate("Login")}>
+        <Button mode="outlined" buttonColor="black" textColor="#bc6c25" style={{ marginTop: 10}} onPress={() => navigation.navigate("Login")}>
           Log in
         </Button>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    color:"#fdb833",
+    color:"#bc6c25",
     fontWeight: 'bold',
     marginBottom: 15
   },

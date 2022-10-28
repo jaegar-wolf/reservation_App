@@ -33,7 +33,7 @@ export default function ReservationScreen({ navigation }: RootStackScreenProps<'
 
     const [value, setValue] = useState('first');
 
-    const [date, setDate] = useState<Date | undefined>(undefined);
+    const [date, setDate] = useState<Date>(new Date());
     const [open, setOpen] = useState(false);
   
     const onDismissSingle = useCallback(() => {
@@ -62,9 +62,9 @@ export default function ReservationScreen({ navigation }: RootStackScreenProps<'
                 <Card.Content style={{display:"flex", alignItems:"center"}}>
                 <View>
                   <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
-                    <RadioButton.Item label="Massage Anti-Stress" color="#fdb833" value="fourth" />
-                    <RadioButton.Item label="Massage à l'huile" color="#fdb833" value="second" />
-                    <RadioButton.Item label="Massage Thaïlandais" color="#fdb833" value="third" />
+                    <RadioButton.Item label="Massage Anti-Stress" color="#bc6c25" value="fourth" />
+                    <RadioButton.Item label="Massage à l'huile" color="#bc6c25" value="second" />
+                    <RadioButton.Item label="Massage Thaïlandais" color="#bc6c25" value="third" />
                   </RadioButton.Group>
                 </View>
                 <View style={{ width:"60%"}}>
@@ -80,14 +80,15 @@ export default function ReservationScreen({ navigation }: RootStackScreenProps<'
                     onConfirm={onConfirmSingle}
                     onChange={onConfirmSingle}/>
                 </View>
-                <Button style={{marginTop:10}} textColor="black" buttonColor="#fdb833" mode="contained" onPress={onToggleSnackBar}>{visible ? 'Annuler' : 'Valider'}</Button>
+                <Button style={{marginTop:10}} textColor="black" buttonColor="#bc6c25" mode="contained" onPress={onToggleSnackBar}>{visible ? 'Annuler' : 'Valider'}</Button>
                 </Card.Content>
               </Card>
               <Snackbar
                 visible={visible}
                 onDismiss={onDismissSnackBar}
                 action={{
-                  label: 'Undo',
+                  textColor:'#fff2b2',
+                  label: 'Done',
                   onPress: () => {
                     // Do something
                   },
@@ -109,7 +110,7 @@ export default function ReservationScreen({ navigation }: RootStackScreenProps<'
         title: {
           fontSize: 20,
           fontWeight: 'bold',
-          color: '#fdb833'
+          color: '#bc6c25'
         },
         separator: {
           marginVertical: 30,

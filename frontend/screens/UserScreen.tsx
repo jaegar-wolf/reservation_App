@@ -49,18 +49,23 @@ export default function UserScreen({ navigation }: RootStackScreenProps<'User'>)
     function updateUser(user:userToUpdate){
       if(user.firstname){
         updateFirstname(user.firstname)
+        getData()
       }
       if(user.lastname){
         updateLastname(user.lastname)
+        getData()
       }
       if(user.phone){
         updatePhone(user.phone)
+        getData()
       }
       if(user.email){
         updateEmail(user.email)
+        getData()
       }
       if(user.password && confirmation == user.password){
         updatePassword(user.password)
+        getData()
       }
       getData()
       setVarUser({...varUser, password:""})
@@ -87,19 +92,19 @@ export default function UserScreen({ navigation }: RootStackScreenProps<'User'>)
                         }
                     <View style={styles.separator}></View>
                     { !modif?
-                    <Button textColor="black" buttonColor="#fdb833" mode="contained" onPress={ () => setModif(!modif)}>Modifier</Button>
+                    <Button textColor="black" buttonColor="#bc6c25" mode="contained" onPress={ () => setModif(!modif)}>Modifier</Button>
                     :
-                    <Button textColor="black" buttonColor="#fdb833" mode="contained" onPress={ () => {updateUser(varUser); setModif(!modif)}}>Valider</Button>
+                    <Button textColor="black" buttonColor="#bc6c25" mode="contained" onPress={ () => {updateUser(varUser); setModif(!modif)}}>Valider</Button>
                     }
                     
                 </View>
                 <View style={styles.separator}></View>
                 <View style={{display: "flex", alignItems: "center"}}>
-                    <Text style={{fontSize:15, fontWeight:"bold", color:"#fdb833"}}>Change Password</Text>
+                    <Text style={{fontSize:15, fontWeight:"bold", color:"#bc6c25"}}>Change Password</Text>
                     <TextInput mode="outlined" activeOutlineColor="black" label="password" style={{ margin: 5 }} secureTextEntry={true} value={varUser.password} onChangeText={value => setVarUser({...varUser, password:value})}/>
                     <TextInput mode="outlined" activeOutlineColor="black" label="confirmation" style={{ margin: 5 }} secureTextEntry={true} value={confirmation} onChangeText={value => setConfirmation(value)} />
-                    <Button textColor="black" buttonColor="#fdb833" mode="contained" style={{marginTop:10}} onPress={()=>updateUser(varUser)}>Valider</Button>
-                    <Button mode="outlined" buttonColor="black" textColor="#fdb833" style={{ marginTop: 180}} onPress={() => logout()}>Log Out</Button>
+                    <Button textColor="black" buttonColor="#bc6c25" mode="contained" style={{marginTop:10}} onPress={()=>updateUser(varUser)}>Valider</Button>
+                    <Button mode="outlined" buttonColor="black" textColor="#bc6c25" style={{ marginTop: 180}} onPress={() => logout()}>Log Out</Button>
                 </View>
         </View>
       );
@@ -116,7 +121,7 @@ export default function UserScreen({ navigation }: RootStackScreenProps<'User'>)
         title: {
           fontSize: 20,
           fontWeight: 'bold',
-          color:"#fdb833"
+          color:"#bc6c25"
         },
         separator: {
           marginVertical: 30,

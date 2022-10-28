@@ -42,10 +42,10 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
           value={email} onChangeText={email => setEmail(email)} />
         <TextInput mode="outlined" label="Password" activeOutlineColor="black" secureTextEntry={true} style={{ margin: 5 }} 
           value={password} onChangeText={password => setPassword(password)}/>
-        <Button style={{ marginTop: 10}} textColor="black" buttonColor="#fdb833" mode="contained" onPress={() => connect(email, password)}>
+        <Button style={{ marginTop: 10}} textColor="black" buttonColor="#bc6c25" mode="contained" onPress={() => connect(email, password)}>
           Sign In
         </Button>
-        <Button style={{marginTop: 20}} mode="outlined" buttonColor="black" textColor="#fdb833" onPress={() => navigation.navigate("Inscription")}>
+        <Button style={{marginTop: 20}} mode="outlined" buttonColor="black" textColor="#bc6c25" onPress={() => navigation.navigate("Inscription")}>
           New Account
         </Button>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    color:'#fdb833',
+    color:'#bc6c25',
     fontWeight: 'bold',
     marginBottom: 15,
   },
