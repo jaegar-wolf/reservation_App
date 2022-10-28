@@ -18,12 +18,12 @@ export default function ArticleScreen({ navigation }: RootStackScreenProps<'Arti
            <ScrollView scrollEnabled>
 
       <View style={styles.top}>
-          <Card style={{width:'100%',backgroundColor:"beige"}}>
+          <Card style={{width:'100%',backgroundColor:"#fff2b2"}}>
               <Card.Content style={{alignItems:'center'}}>
               <Title>Massage anti-stress</Title>
               <Button style = {styles.button} onPress={() => {}}>
                 <Text style={styles.text}>Learn More</Text>
-                 </Button>
+              </Button>
               {/* <Paragraph>Card content</Paragraph> */}
             </Card.Content>
           <Card.Cover source={{ uri: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80' }} />
@@ -31,7 +31,7 @@ export default function ArticleScreen({ navigation }: RootStackScreenProps<'Arti
       </View>
 
         <View style={styles.middle}>
-            <Card style={{width:'100%',backgroundColor:"beige"}}>
+            <Card style={{width:'100%',backgroundColor:"#fff2b2"}}>
             <Card.Content style={{alignItems:'center'}}>
                 <Title>Massage à l'huile</Title>
                 <Button style = {styles.button} onPress={() => {}}>
@@ -45,7 +45,7 @@ export default function ArticleScreen({ navigation }: RootStackScreenProps<'Arti
         </View>
 
         <View style={styles.bottom}>
-        <Card style={{width:'100%',backgroundColor:"beige"}}>
+        <Card style={{width:'100%',backgroundColor:"#fff2b2"}}>
           <Card.Content style={{alignItems:'center'}}>
             <Title>Massage thailandais</Title>
             <Button style = {styles.button} onPress={() => {}}>

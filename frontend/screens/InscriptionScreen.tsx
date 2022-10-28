@@ -21,7 +21,7 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
   const [confirmation, setConfirmation ] = useState("")
 
   function newAccount(user:Registration){
-    if(!user){
+    if(!user.firstname || !user.lastname || !user.email || !user.phone || !user.password){
       console.error("Champ manquant")
       return
     }
