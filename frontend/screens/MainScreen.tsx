@@ -24,8 +24,8 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
         Dans un ambiance chaleureuse,souritante et reposante ici le temps marque une pause, la votre.
         </Text>
         {!token? 
-        <Button style = {styles.button} onPress={() => navigation.navigate("Login")}>
-          <Text style={styles.text}>Nous rejoindre</Text>
+        <Button style={{marginTop:20}} mode='contained' buttonColor='black' textColor='#bc6c25' onPress={() => navigation.navigate("Login")}>
+            <Text style={{fontFamily:'San-Francisco', color:'#bc6c25', fontWeight:'bold'}} >Nous rejoindre</Text>
         </Button>
         :
         <View/>
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     fontSize: 19,
     width:"40%",
     marginTop:50,
-    fontFamily:'San-Franisco',
+    fontFamily:'San-Francisco',
     fontWeight:'bold',
 
   },
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     fontSize: 14.5,
     width:"90%",
     marginTop:3,
-    fontFamily:'San-Franisco',
+    fontFamily:'San-Francisco',
     fontWeight:'bold',
 
   },
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   text_offre: {
     fontSize: 15,
     color:'#fdb833',
-    fontFamily:'San-Franisco',
+    fontFamily:'San-Francisco',
     marginBottom:50,
   },
 
