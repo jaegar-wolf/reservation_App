@@ -18,6 +18,7 @@ import {
   //enGB,
   registerTranslation,
 } from 'react-native-paper-dates'
+import { MultiConfirm, RangeChange, SingleChange } from "react-native-paper-dates/lib/typescript/Date/Calendar";
  registerTranslation('en', en)
 // registerTranslation('fr', fr)
 // registerTranslation('nl', nl)
@@ -33,8 +34,10 @@ export default function ReservationScreen({ navigation }: RootStackScreenProps<'
 
     const [value, setValue] = useState('first');
 
-    const [date, setDate] = useState<Date>(new Date());
+    const [date, setDate] = useState<Date | undefined>();
     const [open, setOpen] = useState(false);
+
+    const [dateS, setDateS] = useState("")
   
     const onDismissSingle = useCallback(() => {
       setOpen(false);
@@ -44,7 +47,8 @@ export default function ReservationScreen({ navigation }: RootStackScreenProps<'
       (params:any) => {
         setOpen(false);
         setDate(params.date);
-        console.log(date)
+        console.log(params.date)
+        
       },
       [setOpen, setDate]
     );
@@ -54,7 +58,6 @@ export default function ReservationScreen({ navigation }: RootStackScreenProps<'
     const onToggleSnackBar = () => setVisible(!visible);
   
     const onDismissSnackBar = () => setVisible(false);
-
     return (
       <View style={styles.container}>
               <Text style={styles.title}>Reservation</Text>
@@ -68,8 +71,8 @@ export default function ReservationScreen({ navigation }: RootStackScreenProps<'
                   </RadioButton.Group>
                 </View>
                 <View style={{ width:"60%"}}>
-                <Button onPress={() => setOpen(true)} uppercase={false} mode="outlined">
-                    Pick single date
+                <Button textColor="#bc6c25" onPress={() => setOpen(true)} uppercase={false} mode="outlined">
+                    { !date? "Pick Date" : `${date?.getDate()}/${date?.getMonth()+1}/${date?.getFullYear()}`}
                   </Button>
                   <DatePickerModal
                     locale="en"
@@ -80,7 +83,7 @@ export default function ReservationScreen({ navigation }: RootStackScreenProps<'
                     onConfirm={onConfirmSingle}
                     onChange={onConfirmSingle}/>
                 </View>
-                <Button style={{marginTop:10}} textColor="black" buttonColor="#bc6c25" mode="contained" onPress={onToggleSnackBar}>{visible ? 'Annuler' : 'Valider'}</Button>
+                <Button style={{marginTop:10}} textColor="black" buttonColor="#bc6c25" mode="contained" onPress={() => {onToggleSnackBar(); setDateS(`${date?.getDate()}/${date?.getMonth()}/${date?.getFullYear()}`)}}>{visible ? 'Annuler' : 'Valider'}</Button>
                 </Card.Content>
               </Card>
               <Snackbar
@@ -93,7 +96,7 @@ export default function ReservationScreen({ navigation }: RootStackScreenProps<'
                     // Do something
                   },
                 }}>
-                Rendez-vous validé
+                Rendez-vous validé le {dateS}
               </Snackbar>
       </View>
     );

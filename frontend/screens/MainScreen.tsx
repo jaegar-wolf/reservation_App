@@ -66,6 +66,9 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
         </TouchableOpacity>
 
       </ScrollView>
+      <Button style={{marginTop:20}} mode='contained' buttonColor='black' textColor='#bc6c25' onPress={() => navigation.navigate("Chatbox")}>
+          <Text style={{fontFamily:'San-Francisco', color:'#bc6c25', fontWeight:'bold'}} >Nous Contacter</Text>
+      </Button>
       </View>
       </ImageBackground>
     </View>
