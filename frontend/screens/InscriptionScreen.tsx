@@ -5,8 +5,10 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootStackScreenProps } from '../types';
 import { TextInput, Button } from 'react-native-paper';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { createAccount, login, Registration } from '../services/AuthService';
+import { UserContext } from '../contexts/UserContext';
+import { getUser } from '../services/userService';
 
 export default function InscriptionScreen({ navigation }: RootStackScreenProps<'Inscription'>) {
   const [user, setUser ] = useState({
@@ -17,6 +19,8 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
     password: "",
     typeUser: 1
   })
+
+  const { token, setTokens } = useContext(UserContext)
 
   const [confirmation, setConfirmation ] = useState("")
 
@@ -31,7 +35,22 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
     }
     createAccount(user).then(response => {
       let { status } = response
-      if(status == 201)login(user.email, user.password)
+      if(status == 201){
+        login(user.email,user.password).then( (response) => {
+          const { status, data } = response
+          if(status === 401) {
+            console.log("Identifiant ou mot de passe incorrecte")
+            return 
+          }
+          setTokens(String(data.acces_token))
+          getUser().then(response => {
+            const {status, data} = response
+            if(status == 200){
+              setUser(data)
+            }
+          }).catch(err => console.log(err))
+      }).catch(err => console.log(err))
+      }
       else console.log(response)
     }).catch(err => console.error(err));
 
