@@ -21,7 +21,7 @@ export class User{
     @Column('text', { select: false})
     password:string;
 
-    @OneToOne(type => TypeUser, role => role.id)
+    @ManyToOne(type => TypeUser, role => role.id)
     @JoinColumn({name:'typeuser_id'})
     typeuser:TypeUser;
 
